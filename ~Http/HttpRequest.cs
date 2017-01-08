@@ -2814,7 +2814,7 @@ namespace Extreme.Net
                 try
                 {
                     var checkIp = IPAddress.Parse("127.0.0.1");
-                    IPAddress[] ips = Dns.GetHostAddressesAsync(Address.Host).Result;
+                    IPAddress[] ips = System.Net.Dns.GetHostAddressesAsync(Address.Host).Result;
 
                     foreach (var ip in ips)
                     {
@@ -3144,7 +3144,7 @@ namespace Extreme.Net
 
             if (CharacterSet == null)
             {
-                charsetName = Encoding.Default.WebName;
+                charsetName = Encoding.GetEncoding(0).WebName;
             }
             else
             {

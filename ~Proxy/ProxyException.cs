@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Runtime.Serialization;
-using System.Security.Permissions;
 
 namespace Extreme.Net
 {
     /// <summary>
     /// Исключение, которое выбрасывается, в случае возникновения ошибки при работе с прокси.
     /// </summary>
-    [Serializable]
     public sealed class ProxyException : NetException
     {
         /// <summary>

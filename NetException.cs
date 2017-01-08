@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Runtime.Serialization;
-using System.Security.Permissions;
 
 namespace Extreme.Net
 {
     /// <summary>
     /// Исключение, которое выбрасывается, в случае возникновения ошибки при работе с сетью.
     /// </summary>
-    [Serializable]
     public class NetException : Exception
     {
         #region Конструкторы (открытые)

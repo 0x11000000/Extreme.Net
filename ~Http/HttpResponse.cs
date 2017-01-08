@@ -1644,13 +1644,13 @@ namespace Extreme.Net
         private Encoding GetCharacterSet()
         {
             if (!_headers.ContainsKey("Content-Type"))
-                return _request.CharacterSet ?? Encoding.Default;
+                return _request.CharacterSet ?? Encoding.GetEncoding(0);
 
             var header = _headers["Content-Type"];
             var match = _contentCharsetRegex.Match(header);
 
             if (!match.Success)
-                return _request.CharacterSet ?? Encoding.Default;
+                return _request.CharacterSet ?? Encoding.GetEncoding(0);
 
             var charset = match.Groups["value"];
 
@@ -1660,7 +1660,7 @@ namespace Extreme.Net
             }
             catch (ArgumentException ex)
             {
-                return _request.CharacterSet ?? Encoding.Default;
+                return _request.CharacterSet ?? Encoding.GetEncoding(0);
             }
         }
 

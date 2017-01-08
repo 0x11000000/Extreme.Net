@@ -102,7 +102,7 @@ namespace Extreme.Net
         /// <returns>Длина тела запроса в байтах.</returns>
         public override long CalculateContentLength()
         {
-            return _content.LongLength;
+            return (long)_content.Length;
         }
 
         /// <summary>

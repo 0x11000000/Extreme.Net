@@ -221,7 +221,7 @@ namespace Extreme.Net
             {
                 try
                 {
-                    IPAddress[] ips = Dns.GetHostAddresses(destinationHost);
+                    IPAddress[] ips = Dns.GetHostAddressesAsync(destinationHost).Result;
 
                     if (ips.Length > 0)
                     {
