@@ -526,24 +526,10 @@ namespace Extreme.Net
 
             try
             {
-                tcpClient.BeginConnect(_host, _port, new AsyncCallback(
-                    (ar) =>
-                    {
-                        if (tcpClient.Client != null)
-                        {
-                            try
-                            {
-                                tcpClient.EndConnect(ar);
-                            }
-                            catch (Exception ex)
-                            {
-                                connectException = ex;
-                            }
-
-                            connectDoneEvent.Set();
-                        }
-                    }), tcpClient
-                );
+                var task = tcpClient.ConnectAsync(_host, _port).ContinueWith((prev) =>
+                {
+                    connectDoneEvent.Set();
+                });
             }
             #region Catch's
 

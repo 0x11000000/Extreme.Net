@@ -649,7 +649,7 @@ namespace Extreme.Net
             MessageBodyLoaded = true;
 
             string text = CharacterSet.GetString(
-                memoryStream.GetBuffer(), 0, (int)memoryStream.Length);
+                memoryStream.ToArray(), 0, (int)memoryStream.Length);
 
             return text;
         }

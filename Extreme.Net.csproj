@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -53,7 +53,9 @@
     </Compile>
     <Compile Include="RequestParams.cs" />
     <Compile Include="~Extensions\HttpExtensions.cs" />
+    <Compile Include="~Extensions\TcpClientExtensions.cs" />
     <Compile Include="~Http\HttpExceptionStatus.cs" />
+    <Compile Include="~Http\MimeTypes.cs" />
     <Compile Include="~Http\~Content\BytesContent.cs" />
     <Compile Include="~Http\~Content\FileContent.cs" />
     <Compile Include="~Http\~Content\FormUrlEncodedContent.cs" />

@@ -46,12 +46,5 @@ namespace Extreme.Net
         #endregion
 
 
-        /// <summary>
-        /// Инициализирует новый экземпляр класса <see cref="ProxyException"/> заданными экземплярами <see cref="SerializationInfo"/> и <see cref="StreamingContext"/>.
-        /// </summary>
-        /// <param name="serializationInfo">Экземпляр класса <see cref="SerializationInfo"/>, который содержит сведения, требуемые для сериализации нового экземпляра класса <see cref="ProxyException"/>.</param>
-        /// <param name="streamingContext">Экземпляр класса <see cref="StreamingContext"/>, содержащий источник сериализованного потока, связанного с новым экземпляром класса <see cref="ProxyException"/>.</param>
-        protected ProxyException(SerializationInfo serializationInfo, StreamingContext streamingContext)
-            : base(serializationInfo, streamingContext) { }
     }
 }

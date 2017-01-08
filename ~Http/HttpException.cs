@@ -59,38 +59,5 @@ namespace Extreme.Net
 
         #endregion
 
-
-        /// <summary>
-        /// Инициализирует новый экземпляр класса <see cref="HttpException"/> заданными экземплярами <see cref="SerializationInfo"/> и <see cref="StreamingContext"/>.
-        /// </summary>
-        /// <param name="serializationInfo">Экземпляр класса <see cref="SerializationInfo"/>, который содержит сведения, требуемые для сериализации нового экземпляра класса <see cref="HttpException"/>.</param>
-        /// <param name="streamingContext">Экземпляр класса <see cref="StreamingContext"/>, содержащий источник сериализованного потока, связанного с новым экземпляром класса <see cref="HttpException"/>.</param>
-        protected HttpException(SerializationInfo serializationInfo, StreamingContext streamingContext)
-            : base(serializationInfo, streamingContext)
-        {
-            if (serializationInfo != null)
-            {
-                Status = (HttpExceptionStatus)serializationInfo.GetInt32("Status");
-                HttpStatusCode = (HttpStatusCode)serializationInfo.GetInt32("HttpStatusCode");
-            }
-        }
-
-
-        /// <summary>
-        /// Заполняет экземпляр <see cref="SerializationInfo"/> данными, необходимыми для сериализации исключения <see cref="HttpException"/>.
-        /// </summary>
-        /// <param name="serializationInfo">Данные о сериализации, <see cref="SerializationInfo"/>, которые должны использоваться.</param>
-        /// <param name="streamingContext">Данные о сериализации, <see cref="StreamingContext"/>, которые должны использоваться.</param>
-        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
-        public override void GetObjectData(SerializationInfo serializationInfo, StreamingContext streamingContext)
-        {
-            base.GetObjectData(serializationInfo, streamingContext);
-
-            if (serializationInfo != null)
-            {
-                serializationInfo.AddValue("Status", (int)Status);
-                serializationInfo.AddValue("HttpStatusCode", (int)HttpStatusCode);
-            }
-        }
     }
 }

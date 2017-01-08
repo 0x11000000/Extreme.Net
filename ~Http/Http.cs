@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security;
 using System.Text;
-using Microsoft.Win32;
 using System.Net.Security;
 
 namespace Extreme.Net
@@ -287,33 +286,7 @@ namespace Extreme.Net
         /// <returns>MIME-тип.</returns>
         public static string DetermineMediaType(string extension)
         {
-            string mediaType = "application/octet-stream";
-
-            try
-            {
-                using (var regKey = Registry.ClassesRoot.OpenSubKey(extension))
-                {
-                    if (regKey != null)
-                    {
-                        object keyValue = regKey.GetValue("Content Type");
-
-                        if (keyValue != null)
-                        {
-                            mediaType = keyValue.ToString();
-                        }
-                    }
-                }
-            }
-            #region Catch's
-
-            catch (IOException) { }
-            catch (ObjectDisposedException) { }
-            catch (UnauthorizedAccessException) { }
-            catch (SecurityException) { }
-
-            #endregion
-
-            return mediaType;
+            return MimeTypes.GetMimeType(extension);
         }
 
         #region User Agent

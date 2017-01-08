@@ -2814,7 +2814,7 @@ namespace Extreme.Net
                 try
                 {
                     var checkIp = IPAddress.Parse("127.0.0.1");
-                    IPAddress[] ips = Dns.GetHostAddresses(Address.Host);
+                    IPAddress[] ips = Dns.GetHostAddressesAsync(Address.Host).Result;
 
                     foreach (var ip in ips)
                     {
@@ -2854,21 +2854,10 @@ namespace Extreme.Net
 
                 try
                 {
-                    tcpClient.BeginConnect(host, port, new AsyncCallback(
-                        (ar) =>
-                        {
-                            try
-                            {
-                                tcpClient.EndConnect(ar);
-                            }
-                            catch (Exception ex)
-                            {
-                                connectException = ex;
-                            }
-
-                            connectDoneEvent.Set();
-                        }), tcpClient
-                    );
+                    var task = tcpClient.ConnectAsync(host, port).ContinueWith((prev) =>
+                    {
+                        connectDoneEvent.Set();
+                    });
                 }
                 #region Catch's
 
@@ -2951,7 +2940,7 @@ namespace Extreme.Net
                         sslStream = new SslStream(_connectionNetworkStream, false, SslCertificateValidatorCallback);
                     }
 
-                    sslStream.AuthenticateAsClient(address.Host);
+                    sslStream.AuthenticateAsClientAsync(address.Host).RunSynchronously();
                     _connectionCommonStream = sslStream;
                 }
                 catch (Exception ex)
