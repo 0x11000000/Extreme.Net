@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Extreme.Net
+namespace Extreme._Extensions
 {
     internal static class TcpClientExtensions
     {
