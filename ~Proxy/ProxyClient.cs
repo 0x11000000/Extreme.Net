@@ -528,7 +528,7 @@ namespace Extreme.Net
             {
                 var task = tcpClient.ConnectAsync(_host, _port).ContinueWith((prev) =>
                 {
-                    connectDoneEvent.Set();
+                    connectDoneEvent.Set();
                 });
             }
             #region Catch's
